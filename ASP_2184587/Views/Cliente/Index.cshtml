@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ASP_2184587.Models.cliente>
+
+@{
+    ViewBag.Title = "Lista de Clientes";
+}
+
+<h2>Lista de Clientes</h2>
+<p>Listado de Clientes registrado en el Sistema de Informacion.</p>
+
+<p>
+    @Html.ActionLink("Crear Cliente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>Gestión</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>
