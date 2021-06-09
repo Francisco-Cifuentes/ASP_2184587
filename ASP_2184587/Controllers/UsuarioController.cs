@@ -46,7 +46,7 @@ namespace ASP_2184587.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "error " + ex);
+                ModelState.AddModelError("", "Error - Datos ingresados de manera erronea");
                 return View();
             }
         }
@@ -79,7 +79,7 @@ namespace ASP_2184587.Controllers
             {
                 using (var db = new inventarioEntities())
                 {
-                    usuario findUser = db.usuario.Where(a => a.id == id).FirstOrDefault();
+                    usuario findUser = db.usuario.Where(a => a.id == id).FirstOrDefault();                    
                     return View(findUser);
                 }
             }
@@ -104,15 +104,15 @@ namespace ASP_2184587.Controllers
                     user.apellido = editUser.apellido;
                     user.email = editUser.email;
                     user.fecha_nacimiento = editUser.fecha_nacimiento;
-                    user.password = editUser.password;
+                    user.password = HashSHA1(editUser.password);
 
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ModelState.AddModelError("", "Error" + ex);
+                ModelState.AddModelError("", "Error - Datos ingresados de manera erronea");
                 return View();
             }
         }

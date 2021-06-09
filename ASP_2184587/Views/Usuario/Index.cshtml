@@ -4,7 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista de Usuarios</h2>
+<p>Listado de Usuarios registrado en el Sistema de Informacion.</p>
 
 <p>
     @Html.ActionLink("Crear Usuario", "Create")
@@ -18,13 +19,7 @@
             Apellido
         </th>
         <th>
-            Fecha de Nacimiento
-        </th>
-        <th>
             Correo
-        </th>
-        <th>
-            Contraseña
         </th>
         <th>Gestión</th>
     </tr>
@@ -38,13 +33,7 @@
             @Html.DisplayFor(modelItem => item.apellido)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha_nacimiento)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
