@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ASP_2184587.Models.proveedor>
+
+@{
+    ViewBag.Title = "Lista de Proveedores";
+}
+
+<h2>Lista de Proveedores</h2>
+<p>Listado de Proveedores registrado en el Sistema de Informacion.</p>
+
+<p>
+    @Html.ActionLink("Crear Proveedor", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>Gestión</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>
