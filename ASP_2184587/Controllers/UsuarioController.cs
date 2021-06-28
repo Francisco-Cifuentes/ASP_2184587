@@ -6,12 +6,15 @@ using System.Web;
 using System.Web.Mvc;
 //importando los modelos de la base de datos
 using ASP_2184587.Models;
+using System.Web.Security;
 
 namespace ASP_2184587.Controllers
 {
+
     public class UsuarioController : Controller
     {
         // GET: Usuario
+        [Authorize]
         public ActionResult Index()
         {
             using (var db = new inventarioEntities())
@@ -134,6 +137,48 @@ namespace ASP_2184587.Controllers
                 ModelState.AddModelError("", "Error" + ex);
                 return View();
             }
+        }
+
+        public ActionResult Login(string message = "")
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string user, string pass)
+        {
+            string Pass_Encrip = UsuarioController.HashSHA1(pass);
+            try
+            {
+                using (var db = new inventarioEntities())
+                {
+                    var userLogin = db.usuario.FirstOrDefault(e => e.email == user && e.password == Pass_Encrip);
+                    if (userLogin != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(userLogin.email, true);
+                        Session["User"] = userLogin;
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return Login("Verifique sus credenciales");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error - Datos ingresados de manera erronea");
+                return View();
+            }
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

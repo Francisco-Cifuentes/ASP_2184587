@@ -1,5 +1,9 @@
 ﻿@model ASP_2184587.Models.producto
 
+@{
+    ViewBag.Title = "Editar Producto";
+}
+
 <h2>Editar Producto</h2>
 <p>En este formulario se puede editar los datos del producto seleccionado.</p>
 
@@ -13,7 +17,7 @@
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            <label class="control-label col-md-2" for="nombre">Nombre</label> 
+            <label class="control-label col-md-2" for="nombre">Nombre</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })

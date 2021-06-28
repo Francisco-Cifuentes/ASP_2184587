@@ -1,0 +1,50 @@
+﻿@model ASP_2184587.Models.compra
+
+@{
+    ViewBag.Title = "Detalles de Compra";
+}
+
+<h2>Detalles de Compra</h2>
+<p>En este formulario se pueden visualizar los datos especificos de la Compra seleccionada.</p>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Fecha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            Total Compra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            Nombre Usuario
+        </dt>
+
+        <dd>
+            @ASP_2184587.Controllers.CompraController.NombreUsuario(Model.id_usuario)
+        </dd>
+
+        <dt>
+            Nombre Cliente
+        </dt>
+
+        <dd>
+            @ASP_2184587.Controllers.CompraController.NombreCliente(Model.id_cliente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>
