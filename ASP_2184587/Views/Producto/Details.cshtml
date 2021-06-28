@@ -1,11 +1,15 @@
 ﻿@model ASP_2184587.Models.producto
+@{
+    ViewBag.Title = "Detalles de Producto";
+}
 
+<h2>Detalles de Producto</h2>
+<p>En este formulario se pueden visualizar los datos especificos del producto seleccionado.</p>
 <div>
-    <h4>producto</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre)
+            Nombre
         </dt>
 
         <dd>
@@ -13,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.percio_unitario)
+            Precio Unitario
         </dt>
 
         <dd>
@@ -21,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
+            Descripcion
         </dt>
 
         <dd>
@@ -29,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
+            Cantidad
         </dt>
 
         <dd>
@@ -37,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.id_proveedor)
+            Nombre del Proveedor
         </dt>
 
         <dd>
@@ -47,6 +51,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar a la Lista", "Index")
 </p>

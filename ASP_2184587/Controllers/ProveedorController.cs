@@ -51,8 +51,8 @@ namespace ASP_2184587.Controllers
         {
             using (var db = new inventarioEntities())
             {
-                var findUser = db.proveedor.Find(id);
-                return View(findUser);
+                var findProv = db.proveedor.Find(id);
+                return View(findProv);
             }
         }
         public ActionResult Edit(int id)
@@ -61,8 +61,8 @@ namespace ASP_2184587.Controllers
             {
                 using (var db = new inventarioEntities())
                 {
-                    proveedor findUser = db.proveedor.Where(a => a.id == id).FirstOrDefault();
-                    return View(findUser);
+                    proveedor findProv = db.proveedor.Where(a => a.id == id).FirstOrDefault();
+                    return View(findProv);
                 }
             }
             catch (Exception ex)
@@ -74,18 +74,18 @@ namespace ASP_2184587.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(proveedor editUser)
+        public ActionResult Edit(proveedor editProv)
         {
             try
             {
                 using (var db = new inventarioEntities())
                 {
-                    proveedor user = db.proveedor.Find(editUser.id);
+                    proveedor prov = db.proveedor.Find(editProv.id);
 
-                    user.nombre = editUser.nombre;
-                    user.direccion = editUser.direccion;
-                    user.telefono = editUser.telefono;
-                    user.nombre_contacto = editUser.nombre_contacto;
+                    prov.nombre = editProv.nombre;
+                    prov.direccion = editProv.direccion;
+                    prov.telefono = editProv.telefono;
+                    prov.nombre_contacto = editProv.nombre_contacto;
 
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -103,8 +103,8 @@ namespace ASP_2184587.Controllers
             {
                 using (var db = new inventarioEntities())
                 {
-                    var findUser = db.proveedor.Find(id);
-                    db.proveedor.Remove(findUser);
+                    var findProv = db.proveedor.Find(id);
+                    db.proveedor.Remove(findProv);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

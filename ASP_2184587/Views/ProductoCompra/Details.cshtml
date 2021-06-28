@@ -1,0 +1,43 @@
+﻿@model ASP_2184587.Models.producto_compra
+
+@{
+    ViewBag.Title = "Detalles de Producto Compra";
+}
+
+<h2>Detalles de Compra Producto</h2>
+<p>En este formulario se pueden visualizar los datos especificos de la Compra Producto seleccionado.</p>
+
+<div>
+    <h4>Producto Compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID Compra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_compra)
+        </dd>
+
+        <dt>
+            ID Producto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_producto)
+        </dd>
+
+        <dt>
+            Cantidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Regresar a la Lista", "Index")
+</p>

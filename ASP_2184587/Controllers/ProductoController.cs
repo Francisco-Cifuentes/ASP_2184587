@@ -67,8 +67,8 @@ namespace ASP_2184587.Controllers
         {
             using (var db = new inventarioEntities())
             {
-                var findUser = db.producto.Find(id);
-                return View(findUser);
+                var findProd = db.producto.Find(id);
+                return View(findProd);
             }
         }
 
@@ -78,8 +78,8 @@ namespace ASP_2184587.Controllers
             {
                 using (var db = new inventarioEntities())
                 {
-                    producto findUser = db.producto.Where(a => a.id == id).FirstOrDefault();
-                    return View(findUser);
+                    producto findProd = db.producto.Where(a => a.id == id).FirstOrDefault();
+                    return View(findProd);
                 }
             }
             catch (Exception ex)
@@ -90,19 +90,19 @@ namespace ASP_2184587.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(producto editUser)
+        public ActionResult Edit(producto editProd)
         {
             try
             {
                 using (var db = new inventarioEntities())
                 {
-                    producto user = db.producto.Find(editUser.id);
+                    producto Prod = db.producto.Find(editProd.id);
 
-                    user.nombre = editUser.nombre;
-                    user.percio_unitario = editUser.percio_unitario;
-                    user.descripcion = editUser.descripcion;
-                    user.cantidad = editUser.cantidad;
-                    user.id_proveedor = editUser.id_proveedor;
+                    Prod.nombre = editProd.nombre;
+                    Prod.percio_unitario = editProd.percio_unitario;
+                    Prod.descripcion = editProd.descripcion;
+                    Prod.cantidad = editProd.cantidad;
+                    Prod.id_proveedor = editProd.id_proveedor;
 
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -120,8 +120,8 @@ namespace ASP_2184587.Controllers
             {
                 using (var db = new inventarioEntities())
                 {
-                    var findUser = db.producto.Find(id);
-                    db.producto.Remove(findUser);
+                    var findProd = db.producto.Find(id);
+                    db.producto.Remove(findProd);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
