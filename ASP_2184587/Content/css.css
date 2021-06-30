@@ -1,0 +1,42 @@
+﻿body {
+}
+
+.footer {
+    left:0;
+    background-color: aqua;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.P_Footer {
+    color: #808080;
+}
+
+a:link {
+    color: #808080;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #515050;
+}
+
+th{
+    background-color:aqua;
+}
+
+.container {
+    width: 70%;
+    margin-left: 15%;
+}
+.navbar {
+    align-items: center;
+    background-color: aqua;
+}
+.body-content{
+    margin-top:65px;
+}
+

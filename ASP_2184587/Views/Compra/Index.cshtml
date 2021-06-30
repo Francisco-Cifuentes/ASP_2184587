@@ -8,15 +8,18 @@
 <p>Listado de Compras registrado en el Sistema de Informacion.</p>
 
 <p>
-    @Html.ActionLink("Crear Compra", "Create")
+    @Html.ActionLink("Crear Compra", "Create", "", new { @class = "btn btn-default", @role = "button" })
 </p>
-<table class="table">
+<table class="table table-bordered table-hover table-responsive">
     <tr>
         <th>
             Fecha
         </th>
         <th>
             Total Compra
+        </th>
+        <th>
+            Gestion
         </th>
     </tr>
 

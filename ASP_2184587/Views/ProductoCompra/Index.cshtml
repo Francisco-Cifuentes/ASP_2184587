@@ -6,9 +6,9 @@
 <h2>Lista de Producto Compra</h2>
 <p>Listado de Producto Compra registrado en el Sistema de Informacion.</p>
 <p>
-    @Html.ActionLink("Crear Producto Compra", "Create")
+    @Html.ActionLink("Crear Producto Compra", "Create", "", new { @class = "btn btn-default", @role = "button" })
 </p>
-<table class="table">
+<table class="table table-bordered table-hover table-responsive">
     <tr>
         <th>
             ID Compra
@@ -19,7 +19,9 @@
         <th>
             Cantidad
         </th>
-        <th></th>
+        <th>
+            Gestion
+        </th>
     </tr>
 
     @foreach (var item in Model)

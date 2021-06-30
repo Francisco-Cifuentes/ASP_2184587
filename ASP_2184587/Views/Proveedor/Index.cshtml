@@ -8,9 +8,9 @@
 <p>Listado de Proveedores registrado en el Sistema de Informacion.</p>
 
 <p>
-    @Html.ActionLink("Crear Proveedor", "Create")
+    @Html.ActionLink("Crear Proveedor", "Create", "", new { @class = "btn btn-default", @role = "button" })
 </p>
-<table class="table">
+<table class="table table-bordered table-hover table-responsive">
     <tr>
         <th>
             Nombre
@@ -21,20 +21,21 @@
         <th>Gestión</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefono)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
-            @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
-            @Html.ActionLink("Borrar", "Delete", new { id = item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>
