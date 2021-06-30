@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASP_2184587.Models;
+using System.IO;
 
 
 namespace ASP_2184587.Controllers
@@ -43,7 +44,7 @@ namespace ASP_2184587.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Error - Datos ingresados de manera erronea");
                 return View();
@@ -116,6 +117,60 @@ namespace ASP_2184587.Controllers
                 ModelState.AddModelError("", "Error" + ex);
                 return View();
             }
+        }
+
+        public ActionResult UploadCSV()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadCSV(HttpPostedFileBase ArchivoFormulario)
+        {
+            //Guardar la ruta
+            string FilePath = string.Empty;
+
+            //Saber si llego el archivo
+            if (ArchivoFormulario != null)
+            {
+                //Ruta de la carpeta que carga el archivo
+                string path = Server.MapPath("~/Uploads/");
+
+                //Verificar si la ruta de la carpeta existe
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                //Obtener el nombre del archivo
+                FilePath = path + Path.GetFileName(ArchivoFormulario.FileName);
+                //Obtener la extension
+                string extension = Path.GetExtension(ArchivoFormulario.FileName);
+                //Guardar el archivo
+                ArchivoFormulario.SaveAs(FilePath);
+
+                string CSVData = System.IO.File.ReadAllText(FilePath);
+                foreach (string row in CSVData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        var NuevoProveedor = new proveedor
+                        {
+                            nombre = row.Split(';')[0],
+                            nombre_contacto = row.Split(';')[1],
+                            direccion = row.Split(';')[2],
+                            telefono = row.Split(';')[3]
+                        };
+                        using (var db = new inventarioEntities())
+                        {
+                            db.proveedor.Add(NuevoProveedor);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+
+            }
+            return RedirectToAction("Index");
         }
     }
 }

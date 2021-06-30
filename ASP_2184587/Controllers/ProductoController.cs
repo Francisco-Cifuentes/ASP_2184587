@@ -59,7 +59,7 @@ namespace ASP_2184587.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Error - Datos ingresados de manera erronea");
                 return View();
