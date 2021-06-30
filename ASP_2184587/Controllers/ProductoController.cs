@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASP_2184587.Models;
+using Rotativa;
 
 namespace ASP_2184587.Controllers
 {
@@ -154,6 +155,11 @@ namespace ASP_2184587.Controllers
                             Precio_Pord = tabProducto.percio_unitario
                         };
             return View(query);            
+        }
+
+        public ActionResult ImprimirReporte()
+        {
+            return new ActionAsPdf("Reporte") { FileName = "Reporte.pdf"};
         }
     }
 }
