@@ -10,7 +10,6 @@ using System.Web.Security;
 
 namespace ASP_2184587.Controllers
 {
-
     public class UsuarioController : Controller
     {
         // GET: Usuario
@@ -23,11 +22,11 @@ namespace ASP_2184587.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(usuario usuario)
@@ -66,7 +65,7 @@ namespace ASP_2184587.Controllers
             }
             return sb.ToString();
         }
-
+        [Authorize]
         public ActionResult Details (int id)
         {
             using (var db = new inventarioEntities())
@@ -75,7 +74,7 @@ namespace ASP_2184587.Controllers
                 return View(findUser);
             }
         }
-
+        [Authorize]
         public ActionResult Edit (int id)
         {
             try

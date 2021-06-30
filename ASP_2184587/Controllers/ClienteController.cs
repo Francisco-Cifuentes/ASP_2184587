@@ -7,9 +7,11 @@ using ASP_2184587.Models;
 
 namespace ASP_2184587.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
         // GET: Cliente
+        [Authorize]
         public ActionResult Index()
         {
             using (var db = new inventarioEntities())

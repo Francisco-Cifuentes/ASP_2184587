@@ -8,7 +8,6 @@
 <p>En este formulario se pueden visualizar los datos especificos de la Compra Producto seleccionado.</p>
 
 <div>
-    <h4>Producto Compra</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,11 +19,11 @@
         </dd>
 
         <dt>
-            ID Producto
+            Nombre del Producto
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.id_producto)
+            @ASP_2184587.Controllers.ProductoCompraController.NombreProducto(Model.id_producto)
         </dd>
 
         <dt>

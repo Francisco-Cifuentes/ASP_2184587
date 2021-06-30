@@ -7,9 +7,11 @@ using ASP_2184587.Models;
 
 namespace ASP_2184587.Controllers
 {
+    [Authorize]
     public class ProductoController : Controller
     {
         // GET: Producto
+        [Authorize]
         public ActionResult Index()
         {
             using (var db = new inventarioEntities())
@@ -74,6 +76,10 @@ namespace ASP_2184587.Controllers
 
         public ActionResult Edit(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             try
             {
                 using (var db = new inventarioEntities())

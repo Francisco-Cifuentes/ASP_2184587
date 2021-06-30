@@ -8,9 +8,11 @@ using ASP_2184587.Models;
 
 namespace ASP_2184587.Controllers
 {
+    [Authorize]
     public class ProveedorController : Controller
     {
         // GET: Proveedor
+        [Authorize]
         public ActionResult Index()
         {
             using (var db = new inventarioEntities())
